@@ -1,0 +1,12 @@
+
+version: '3'
+services:
+  webserver:
+    image: nginx
+    ports:
+      - "80:80"
+  script:
+    build: .
+    volumes:
+      - ./bash_script.sh:/bash_script.sh
+    command: sh -c "service cron start && tail -f /dev/null"
